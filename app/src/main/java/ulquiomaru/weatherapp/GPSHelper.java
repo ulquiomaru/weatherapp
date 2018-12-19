@@ -6,7 +6,7 @@ import android.location.LocationManager;
 
 import java.util.List;
 
-public class GPSHelper {
+class GPSHelper {
 
     /*
      * Emulate GPS location:
@@ -14,21 +14,15 @@ public class GPSHelper {
      * - geo fix <longitude value> <latitude value>
      */
 
-    private Context context;
-    private boolean isGPSEnabled = false;
-    private boolean isNetworkEnabled = false;
     private LocationManager locationManager;
     private double latitude;
     private double longitude;
 
-    public GPSHelper(Context context) {
-        this.context = context;
-
+    GPSHelper(Context context) {
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-
     }
 
-    public void getMyLocation() {
+    void getMyLocation() {
         List<String> providers = locationManager.getProviders(true);
 
         Location l = null;
@@ -43,24 +37,22 @@ public class GPSHelper {
         }
     }
 
-    public boolean isGPSenabled() {
-        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
-        return (isGPSEnabled || isNetworkEnabled);
+    boolean isGPSenabled() {
+        return (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER));
     }
 
     /**
      * Function to get latitude
      */
-    public double getLatitude() {
+    double getLatitude() {
         return latitude;
     }
 
     /**
      * Function to get longitude
      */
-    public double getLongitude() {
+    double getLongitude() {
         return longitude;
     }
 }

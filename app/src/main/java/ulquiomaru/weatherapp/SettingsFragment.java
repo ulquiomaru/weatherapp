@@ -30,7 +30,7 @@ public class SettingsFragment extends Fragment {
         toggleFahrenheit = view.findViewById(R.id.toggleFahrenheit);
         toggleKmph = view.findViewById(R.id.toggleKmph);
         toggleMiles = view.findViewById(R.id.toggleMiles);
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
 
         toggleCelsius.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

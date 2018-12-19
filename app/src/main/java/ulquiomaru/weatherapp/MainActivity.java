@@ -56,10 +56,8 @@ public class MainActivity extends AppCompatActivity {
             FragmentManager fm = getSupportFragmentManager();
             if (fm != null) {
                 FragmentTransaction ft = fm.beginTransaction();
-                if (ft != null) {
-                    ft.replace(R.id.fragmentContainer, fragment);
-                    ft.commit();
-                }
+                ft.replace(R.id.fragmentContainer, fragment);
+                ft.commit();
             }
         }
     }
