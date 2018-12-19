@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_today"
+        android:icon="@drawable/ic_wb_sunny_black_24dp"
+        android:title="@string/todays_weather" />
+
+    <item
+        android:id="@+id/nav_week"
+        android:icon="@drawable/ic_date_range_black_24dp"
+        android:title="@string/weekly_forecast" />
+
+    <item
+        android:id="@+id/nav_wind"
+        android:icon="@drawable/wind"
+        android:title="@string/wind_forecast" />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/settings" />
+
+</menu>
