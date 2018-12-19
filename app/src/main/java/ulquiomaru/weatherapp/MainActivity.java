@@ -14,6 +14,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    final String apiKey = "178a816d887b45b3be5160427181812";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
