@@ -12,6 +12,8 @@ import java.net.URL;
 
 class Util {
 
+    final static String apiKey = "8da4cd59d6c44edabf001220182012";
+    final static String baseUrl = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=%s&q=%f,%f&num_of_days=%d&tp=24&format=json&includelocation=yes&extra=localObsTime";
     private static SparseArray<String> weatherIcons;
 
     static void initWeatherIcons(Context context) {

@@ -2,17 +2,12 @@ package ulquiomaru.weatherapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,14 +18,8 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Locale;
 
 public class TodayFragment extends Fragment {
@@ -45,10 +34,6 @@ public class TodayFragment extends Fragment {
     TextView tvLocation;
     TextView tvFeelsLike;
     GPSHelper gpsHelper;
-
-    final String apiKey = "8da4cd59d6c44edabf001220182012";
-    final String baseUrl = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=%s&q=%f,%f&num_of_days=%d&tp=24&format=json&includelocation=yes&extra=localObsTime";
-    // args: api + lat + lon + num_of_days
 
     @Nullable
     @Override
@@ -70,7 +55,7 @@ public class TodayFragment extends Fragment {
 
         if (checkNetworkConnection() && gpsHelper.isGPSenabled()) {
             gpsHelper.getMyLocation();
-            new HTTPAsyncTask().execute(String.format(Locale.getDefault(), baseUrl, apiKey, gpsHelper.getLatitude(), gpsHelper.getLongitude(), 1));
+            new HTTPAsyncTask().execute(String.format(Locale.getDefault(), Util.baseUrl, Util.apiKey, gpsHelper.getLatitude(), gpsHelper.getLongitude(), 1));
         }
         else {
             Toast.makeText(requireActivity(), "GPS or INTERNET not enabled.!", Toast.LENGTH_SHORT).show();
