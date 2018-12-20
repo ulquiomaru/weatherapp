@@ -24,7 +24,7 @@
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -33,11 +33,12 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvWeek">
+        app:layout_constraintTop_toBottomOf="@id/tvWeek"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/tvDay1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -45,12 +46,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
-            tools:text="Day 1\nadfkjghafdg" />
+            tools:text="Day 1" />
 
         <TextView
             android:id="@+id/tvDay2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -58,12 +61,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 2" />
 
         <TextView
             android:id="@+id/tvDay3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -71,12 +76,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 3" />
 
         <TextView
             android:id="@+id/tvDay4"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -84,12 +91,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 4" />
 
         <TextView
             android:id="@+id/tvDay5"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -97,12 +106,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 5" />
 
         <TextView
             android:id="@+id/tvDay6"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -110,12 +121,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 6" />
 
         <TextView
             android:id="@+id/tvDay7"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -123,6 +136,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 7" />
 

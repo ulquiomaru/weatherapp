@@ -9,10 +9,91 @@
         android:id="@+id/tvWind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wind!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="Wind Statistics"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWind"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvChill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            tools:text="Chill:\n19*C" />
+
+        <TextView
+            android:id="@+id/tvSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            tools:text="Speed:\n10 Km per hour" />
+
+        <TextView
+            android:id="@+id/tvGust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            tools:text="Gust:\n19 Km per hour" />
+
+        <TextView
+            android:id="@+id/tvDirection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            tools:text="Direction:\nNW" />
+
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
 
 </android.support.constraint.ConstraintLayout>

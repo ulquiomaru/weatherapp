@@ -140,7 +140,7 @@ public class TodayFragment extends Fragment {
         tvWeather.setText("Today");
         tvLastUpdated.setText("Last Updated" + separator + localObsDateTime.split(" ", 2)[1]);
         tvLocation.setText(areaName + ", " + city);
-        tvTemp.setText("Temperature" + separator + temp);
+        tvTemp.setText("Current" + separator + temp);
         tvTempRange.setText("H: " + temp_max + separator + "L: " + temp_min);
         tvWeatherDesc.setText(weatherDesc);
         tvFeelsLike.setText("FeelsLike" + separator + temp_feels_like);

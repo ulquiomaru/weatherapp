@@ -72,7 +72,7 @@
         app:layout_constraintEnd_toStartOf="@id/tvWeather"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvWeather"
-        tools:text="Temperature\n14 *C" />
+        tools:text="Current\n14 *C" />
 
     <TextView
         android:id="@+id/tvTempRange"
