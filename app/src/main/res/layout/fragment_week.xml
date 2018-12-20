@@ -46,8 +46,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 1" />
 
@@ -61,8 +61,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 2" />
 
@@ -76,8 +76,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 3" />
 
@@ -91,8 +91,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 4" />
 
@@ -106,8 +106,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 5" />
 
@@ -121,8 +121,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 6" />
 
@@ -136,8 +136,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 7" />
 
