@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Weather App</string>
     <string name="settings">Settings</string>
     <string name="wind_forecast">Wind Forecast</string>
@@ -10,4 +11,56 @@
     <string name="miles_h">Miles/h</string>
     <string name="key_degree">KEY_DEGREE</string>
     <string name="key_speed">KEY_SPEED</string>
+
+    <string-array name="weatherData">
+        <item>113|wsymbol_0001_sunny</item>
+        <item>116|wsymbol_0002_sunny_intervals</item>
+        <item>119|wsymbol_0003_white_cloud</item>
+        <item>122|wsymbol_0004_black_low_cloud</item>
+        <item>143|wsymbol_0006_mist</item>
+        <item>176|wsymbol_0009_light_rain_showers</item>
+        <item>179|wsymbol_0011_light_snow_showers</item>
+        <item>182|wsymbol_0013_sleet_showers</item>
+        <item>185|wsymbol_0049_freezing_drizzle</item>
+        <item>200|wsymbol_0016_thundery_showers</item>
+        <item>227|wsymbol_0053_blowing_snow</item>
+        <item>230|wsymbol_0054_blizzard</item>
+        <item>248|wsymbol_0007_fog</item>
+        <item>260|wsymbol_0047_freezing_fog</item>
+        <item>263|wsymbol_0048_drizzle</item>
+        <item>266|wsymbol_0048_drizzle</item>
+        <item>281|wsymbol_0049_freezing_drizzle</item>
+        <item>284|wsymbol_0083_heavy_freezing_drizzle</item>
+        <item>293|wsymbol_0009_light_rain_showers</item>
+        <item>296|wsymbol_0017_cloudy_with_light_rain</item>
+        <item>299|wsymbol_0009_light_rain_showers</item>
+        <item>302|wsymbol_0017_cloudy_with_light_rain</item>
+        <item>305|wsymbol_0010_heavy_rain_showers</item>
+        <item>308|wsymbol_0018_cloudy_with_heavy_rain</item>
+        <item>311|wsymbol_0050_freezing_rain</item>
+        <item>314|wsymbol_0050_freezing_rain</item>
+        <item>317|wsymbol_0021_cloudy_with_sleet</item>
+        <item>320|wsymbol_0021_cloudy_with_sleet</item>
+        <item>323|wsymbol_0011_light_snow_showers</item>
+        <item>326|wsymbol_0019_cloudy_with_light_snow</item>
+        <item>329|wsymbol_0011_light_snow_showers</item>
+        <item>332|wsymbol_0019_cloudy_with_light_snow</item>
+        <item>353|wsymbol_0012_heavy_snow_showers</item>
+        <item>338|wsymbol_0020_cloudy_with_heavy_snow</item>
+        <item>350|wsymbol_0022_cloudy_with_light_hail</item>
+        <item>353|wsymbol_0009_light_rain_showers</item>
+        <item>356|wsymbol_0010_heavy_rain_showers</item>
+        <item>359|wsymbol_0085_extreme_rain_showers</item>
+        <item>362|wsymbol_0013_sleet_showers</item>
+        <item>365|wsymbol_0087_heavy_sleet_showers</item>
+        <item>368|wsymbol_0011_light_snow_showers</item>
+        <item>371|wsymbol_0012_heavy_snow_showers</item>
+        <item>374|wsymbol_0014_light_hail_showers</item>
+        <item>377|wsymbol_0015_heavy_hail_showers</item>
+        <item>386|wsymbol_0016_thundery_showers</item>
+        <item>389|wsymbol_0024_thunderstorms</item>
+        <item>392|wsymbol_0057_thundery_snow_showers</item>
+        <item>395|wsymbol_0058_thunderstorms_with_snow</item>
+    </string-array>
+
 </resources>

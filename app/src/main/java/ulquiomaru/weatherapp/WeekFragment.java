@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +81,7 @@ public class WeekFragment extends Fragment {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                return HttpGet(urls[0]);
+                return Util.HttpGet(urls[0]);
             } catch (IOException e) {
                 return "Unable to retrieve web page. URL may be invalid." + urls[0];
             }
@@ -91,60 +92,6 @@ public class WeekFragment extends Fragment {
             try { if (isAdded()) JSONParser(result); }
             catch (JSONException e) { e.printStackTrace(); }
         }
-    }
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        private DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            Bitmap weatherIcon = null;
-            try {
-                InputStream in = new java.net.URL(urls[0]).openStream();
-                weatherIcon = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return weatherIcon;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
-
-    private static String HttpGet(String myUrl) throws IOException {
-        String result;
-
-        URL url = new URL(myUrl);
-
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.connect();
-        InputStream inputStream = conn.getInputStream();
-
-        if (inputStream != null) {
-            result = convertInputStreamToString(inputStream);
-        }
-        else
-            result = "Did not work!";
-
-        return result;
-    }
-
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        BufferedReader bufferedReader= new BufferedReader(new InputStreamReader(inputStream));
-        String line;
-        StringBuilder sb = new StringBuilder();
-
-        while ((line = bufferedReader.readLine()) != null)
-            sb.append(line);
-
-        inputStream.close();
-
-        return sb.toString();
     }
 
     private void JSONParser (String input) throws JSONException {
@@ -164,11 +111,8 @@ public class WeekFragment extends Fragment {
             String mintempC = weather.getString("mintempC");
             String mintempF = weather.getString("mintempF");
             JSONObject hourly = weather.getJSONArray("hourly").getJSONObject(0);
-            String tempC = hourly.getString("tempC");
-            String tempF = hourly.getString("tempF");
             String weatherCode = hourly.getString("weatherCode");
             String weatherDesc = hourly.getJSONArray("weatherDesc").getJSONObject(0).getString("value");
-            String weatherIconUrl = hourly.getJSONArray("weatherIconUrl").getJSONObject(0).getString("value");
             String FeelsLikeC = hourly.getString("FeelsLikeC");
             String FeelsLikeF = hourly.getString("FeelsLikeF");
 
@@ -192,12 +136,10 @@ public class WeekFragment extends Fragment {
             String sb = day + separator +
                     weatherDesc + separator +
                     "H: " + temp_max + tab +
-                    "L: " + temp_min + tab +
-                    "FeelsLike: " + temp_feels_like;
+                    "L: " + temp_min;
             dayList.get(i).setText(sb);
+            dayList.get(i).setCompoundDrawablesWithIntrinsicBounds(getResources().getIdentifier(Util.weatherIconRes(weatherCode), "drawable", requireActivity().getPackageName()), 0, 0, 0);
         }
-
-//        new DownloadImageTask(imgWeather).execute(weatherIconUrl);
 
         tvWeek.setText("Weekly Forecast");
     }

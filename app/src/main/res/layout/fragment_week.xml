@@ -45,7 +45,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
+            tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 1\nadfkjghafdg" />
 
         <TextView
@@ -58,7 +58,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
+            tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 2" />
 
         <TextView
@@ -71,7 +71,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
+            tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 3" />
 
         <TextView
@@ -84,7 +84,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
+            tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 4" />
 
         <TextView
@@ -97,7 +97,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
+            tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 5" />
 
         <TextView
@@ -110,7 +110,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
+            tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 6" />
 
         <TextView
@@ -123,7 +123,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
+            tools:drawableLeft="@drawable/ic_wsymbol_0001_sunny"
             tools:text="Day 7" />
 
     </android.support.v7.widget.LinearLayoutCompat>

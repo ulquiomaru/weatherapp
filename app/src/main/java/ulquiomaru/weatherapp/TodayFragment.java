@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -86,7 +89,7 @@ public class TodayFragment extends Fragment {
         @Override
         protected String doInBackground(String... urls) {
             try {
-                return HttpGet(urls[0]);
+                return Util.HttpGet(urls[0]);
             } catch (IOException e) {
                 return "Unable to retrieve web page. URL may be invalid." + urls[0];
             }
@@ -97,60 +100,6 @@ public class TodayFragment extends Fragment {
             try { if (isAdded()) JSONParser(result); }
             catch (JSONException e) { e.printStackTrace(); }
         }
-    }
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        private DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            Bitmap weatherIcon = null;
-            try {
-                InputStream in = new java.net.URL(urls[0]).openStream();
-                weatherIcon = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return weatherIcon;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
-
-    private static String HttpGet(String myUrl) throws IOException {
-        String result;
-
-        URL url = new URL(myUrl);
-
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.connect();
-        InputStream inputStream = conn.getInputStream();
-
-        if (inputStream != null) {
-            result = convertInputStreamToString(inputStream);
-        }
-        else
-            result = "Did not work!";
-
-        return result;
-    }
-
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        BufferedReader bufferedReader= new BufferedReader(new InputStreamReader(inputStream));
-        String line;
-        StringBuilder sb = new StringBuilder();
-
-        while ((line = bufferedReader.readLine()) != null)
-            sb.append(line);
-
-        inputStream.close();
-
-        return sb.toString();
     }
 
     private void JSONParser (String input) throws JSONException {
@@ -171,7 +120,6 @@ public class TodayFragment extends Fragment {
         String FeelsLikeF = current_condition.getString("FeelsLikeF");
         String weatherCode = current_condition.getString("weatherCode");
         String weatherDesc = current_condition.getJSONArray("weatherDesc").getJSONObject(0).getString("value");
-        String weatherIconUrl = current_condition.getJSONArray("weatherIconUrl").getJSONObject(0).getString("value");
 
         String windspeedMiles = current_condition.getString("windspeedMiles");
         String windspeedKmph = current_condition.getString("windspeedKmph");
@@ -181,8 +129,6 @@ public class TodayFragment extends Fragment {
         String maxtempF = weather.getString("maxtempF");
         String mintempC = weather.getString("mintempC");
         String mintempF = weather.getString("mintempF");
-
-        new DownloadImageTask(imgWeather).execute(weatherIconUrl);
 
         SharedPreferences sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
         int degree = sharedPref.getInt(getString(R.string.key_degree), 0);
@@ -205,7 +151,7 @@ public class TodayFragment extends Fragment {
             temp_max = maxtempF + fahrenheit;
             temp_feels_like = FeelsLikeF + fahrenheit;
         }
-
+        imgWeather.setImageResource(getResources().getIdentifier(Util.weatherIconRes(weatherCode), "drawable", requireActivity().getPackageName()));
         tvWeather.setText("Today");
         tvLastUpdated.setText("Last Updated" + separator + localObsDateTime.split(" ", 2)[1]);
         tvLocation.setText(areaName + ", " + city);
