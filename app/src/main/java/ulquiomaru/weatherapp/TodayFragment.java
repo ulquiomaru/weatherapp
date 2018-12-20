@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,9 +40,10 @@ public class TodayFragment extends Fragment {
     TextView tvLastUpdated;
     TextView tvWeatherDesc;
     TextView tvLocation;
+    TextView tvFeelsLike;
     GPSHelper gpsHelper;
 
-    final String apiKey = "178a816d887b45b3be5160427181812";
+    final String apiKey = "8da4cd59d6c44edabf001220182012";
     final String baseUrl = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=%s&q=%f,%f&num_of_days=%d&tp=24&format=json&includelocation=yes&extra=localObsTime";
     // api + lat + lon + numdays + tp + format
     // https://api.worldweatheronline.com/premium/v1/weather.ashx?key=178a816d887b45b3be5160427181812&q=40.97,29.15&num_of_days=1&tp=24&format=json&includelocation=yes&extra=localObsTime&
@@ -60,6 +62,7 @@ public class TodayFragment extends Fragment {
         tvLastUpdated = view.findViewById(R.id.tvLastUpdated);
         tvWeatherDesc = view.findViewById(R.id.tvWeatherDesc);
         tvLocation = view.findViewById(R.id.tvLocation);
+        tvFeelsLike = view.findViewById(R.id.tvFeelsLike);
 
         gpsHelper = new GPSHelper(requireActivity());
 
@@ -68,7 +71,7 @@ public class TodayFragment extends Fragment {
             new HTTPAsyncTask().execute(String.format(Locale.getDefault(), baseUrl, apiKey, gpsHelper.getLatitude(), gpsHelper.getLongitude(), 1));
         }
         else {
-            tvWeather.setText("GPS or INTERNET not enabled.!");
+            Toast.makeText(requireActivity(), "GPS or INTERNET not enabled.!", Toast.LENGTH_SHORT).show();
         }
 
         return view;
@@ -184,7 +187,6 @@ public class TodayFragment extends Fragment {
             String mintempF = weather.getString("mintempF");
 
             new DownloadImageTask(imgWeather).execute(weatherIconUrl);
-
             // https://stackoverflow.com/questions/5776851/load-image-from-url
 
             //return sb.toString();
@@ -196,25 +198,29 @@ public class TodayFragment extends Fragment {
             String temp = null;
             String temp_min = null;
             String temp_max = null;
+            String temp_feels_like = null;
             if (degree == 0) {
                 String celsius = getString(R.string.celsius);
                 temp = temp_C + celsius;
                 temp_min = mintempC + celsius;
                 temp_max = maxtempC + celsius;
+                temp_feels_like = FeelsLikeC + celsius;
             }
             else if (degree == 1) {
                 String fahrenheit = getString(R.string.fahrenheit);
                 temp = temp_F + fahrenheit;
                 temp_min = mintempF + fahrenheit;
                 temp_max = maxtempF + fahrenheit;
+                temp_feels_like = FeelsLikeF + fahrenheit;
             }
 
-            tvWeather.setText("Weather");
+            tvWeather.setText("Today");
             tvLastUpdated.setText("Last Updated" + separator + localObsDateTime.split(" ", 2)[1]);
             tvLocation.setText(areaName + ", " + city);
-            tvTemp.setText(temp);
-            tvTempRange.setText(temp_max + separator + temp_min);
+            tvTemp.setText("Temperature" + separator + temp);
+            tvTempRange.setText("H: " + temp_max + separator + "L: " + temp_min);
             tvWeatherDesc.setText(weatherDesc);
+            tvFeelsLike.setText("FeelsLike" + separator + temp_feels_like);
 //        }
     }
 }
