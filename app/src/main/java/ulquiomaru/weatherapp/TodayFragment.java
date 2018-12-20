@@ -45,7 +45,7 @@ public class TodayFragment extends Fragment {
 
     final String apiKey = "8da4cd59d6c44edabf001220182012";
     final String baseUrl = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=%s&q=%f,%f&num_of_days=%d&tp=24&format=json&includelocation=yes&extra=localObsTime";
-    // api + lat + lon + numdays + tp + format
+    // api + lat + lon + num_of_days
     // https://api.worldweatheronline.com/premium/v1/weather.ashx?key=178a816d887b45b3be5160427181812&q=40.97,29.15&num_of_days=1&tp=24&format=json&includelocation=yes&extra=localObsTime&
 
     @Nullable
