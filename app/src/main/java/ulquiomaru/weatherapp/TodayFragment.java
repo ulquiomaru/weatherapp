@@ -106,10 +106,6 @@ public class TodayFragment extends Fragment {
         String weatherCode = current_condition.getString("weatherCode");
         String weatherDesc = current_condition.getJSONArray("weatherDesc").getJSONObject(0).getString("value");
 
-        String windspeedMiles = current_condition.getString("windspeedMiles");
-        String windspeedKmph = current_condition.getString("windspeedKmph");
-        String winddirDegree = current_condition.getString("winddirDegree");
-
         String maxtempC = weather.getString("maxtempC");
         String maxtempF = weather.getString("maxtempF");
         String mintempC = weather.getString("mintempC");
@@ -117,7 +113,6 @@ public class TodayFragment extends Fragment {
 
         SharedPreferences sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
         int degree = sharedPref.getInt(getString(R.string.key_degree), 0);
-        int speed = sharedPref.getInt(getString(R.string.key_speed), 0);
         String temp = null;
         String temp_min = null;
         String temp_max = null;

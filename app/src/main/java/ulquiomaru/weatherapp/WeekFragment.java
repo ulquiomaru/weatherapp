@@ -100,23 +100,18 @@ public class WeekFragment extends Fragment {
             JSONObject hourly = weather.getJSONArray("hourly").getJSONObject(0);
             String weatherCode = hourly.getString("weatherCode");
             String weatherDesc = hourly.getJSONArray("weatherDesc").getJSONObject(0).getString("value");
-            String FeelsLikeC = hourly.getString("FeelsLikeC");
-            String FeelsLikeF = hourly.getString("FeelsLikeF");
 
-            String temp_feels_like = null;
             String temp_min = null;
             String temp_max = null;
             if (degree == 0) {
                 String celsius = getString(R.string.celsius);
                 temp_min = mintempC + celsius;
                 temp_max = maxtempC + celsius;
-                temp_feels_like = FeelsLikeC + celsius;
             }
             else if (degree == 1) {
                 String fahrenheit = getString(R.string.fahrenheit);
                 temp_min = mintempF + fahrenheit;
                 temp_max = maxtempF + fahrenheit;
-                temp_feels_like = FeelsLikeF + fahrenheit;
             }
             String day = date.split("-")[2] + "/" + date.split("-")[1];
 

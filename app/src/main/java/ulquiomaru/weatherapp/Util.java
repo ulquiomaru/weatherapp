@@ -1,6 +1,7 @@
 package ulquiomaru.weatherapp;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
 import java.io.BufferedReader;
@@ -25,6 +26,7 @@ class Util {
         }
     }
 
+    @NonNull
     static String weatherIconRes(String weatherCode) {
         return "ic_" + weatherIcons.get(Integer.valueOf(weatherCode));
     }
@@ -47,6 +49,7 @@ class Util {
         return result;
     }
 
+    @NonNull
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
         BufferedReader bufferedReader= new BufferedReader(new InputStreamReader(inputStream));
         String line;
