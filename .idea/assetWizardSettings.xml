@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_wsymbol_0002_sunny_intervals" />
-                            <entry key="sourceFile" value="C:\dev\AndroidStudioProjects\WeatherApp\app\src\main\res\drawable\weather\wsymbol_0002_sunny_intervals.svg" />
+                            <entry key="outputName" value="ic_wsymbol_0058_thunderstorms_with_snow" />
+                            <entry key="sourceFile" value="C:\weather\wsymbol_0058_thunderstorms_with_snow.svg" />
                           </map>
                         </option>
                       </PersistentState>
