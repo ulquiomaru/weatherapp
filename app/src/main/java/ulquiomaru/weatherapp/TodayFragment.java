@@ -45,8 +45,7 @@ public class TodayFragment extends Fragment {
 
     final String apiKey = "8da4cd59d6c44edabf001220182012";
     final String baseUrl = "https://api.worldweatheronline.com/premium/v1/weather.ashx?key=%s&q=%f,%f&num_of_days=%d&tp=24&format=json&includelocation=yes&extra=localObsTime";
-    // api + lat + lon + num_of_days
-    // https://api.worldweatheronline.com/premium/v1/weather.ashx?key=178a816d887b45b3be5160427181812&q=40.97,29.15&num_of_days=1&tp=24&format=json&includelocation=yes&extra=localObsTime&
+    // args: api + lat + lon + num_of_days
 
     @Nullable
     @Override
@@ -77,9 +76,7 @@ public class TodayFragment extends Fragment {
         return view;
     }
 
-
-
-    public boolean checkNetworkConnection() {
+    private boolean checkNetworkConnection() {
         ConnectivityManager connMgr = (ConnectivityManager) requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
@@ -156,71 +153,65 @@ public class TodayFragment extends Fragment {
         return sb.toString();
     }
 
-    public void JSONParser (String input) throws JSONException {
-//        if (isAdded()) {
-            String separator = System.getProperty("line.separator");
+    private void JSONParser (String input) throws JSONException {
+        String separator = System.getProperty("line.separator");
 
-            JSONObject root = new JSONObject(input).getJSONObject("data");
-            JSONObject nearest_area =  root.getJSONArray("nearest_area").getJSONObject(0);
-            JSONObject current_condition =  root.getJSONArray("current_condition").getJSONObject(0);
-            JSONObject weather =  root.getJSONArray("weather").getJSONObject(0);
+        JSONObject root = new JSONObject(input).getJSONObject("data");
+        JSONObject nearest_area =  root.getJSONArray("nearest_area").getJSONObject(0);
+        JSONObject current_condition =  root.getJSONArray("current_condition").getJSONObject(0);
+        JSONObject weather =  root.getJSONArray("weather").getJSONObject(0);
 
-            String areaName = nearest_area.getJSONArray("areaName").getJSONObject(0).getString("value");
-            String city = nearest_area.getJSONArray("region").getJSONObject(0).getString("value");
+        String areaName = nearest_area.getJSONArray("areaName").getJSONObject(0).getString("value");
+        String city = nearest_area.getJSONArray("region").getJSONObject(0).getString("value");
 
-            String localObsDateTime = current_condition.getString("localObsDateTime");
-            String temp_C = current_condition.getString("temp_C");
-            String temp_F = current_condition.getString("temp_F");
-            String FeelsLikeC = current_condition.getString("FeelsLikeC");
-            String FeelsLikeF = current_condition.getString("FeelsLikeF");
-            String weatherCode = current_condition.getString("weatherCode");
-            String weatherDesc = current_condition.getJSONArray("weatherDesc").getJSONObject(0).getString("value");
-            String weatherIconUrl = current_condition.getJSONArray("weatherIconUrl").getJSONObject(0).getString("value");
+        String localObsDateTime = current_condition.getString("localObsDateTime");
+        String temp_C = current_condition.getString("temp_C");
+        String temp_F = current_condition.getString("temp_F");
+        String FeelsLikeC = current_condition.getString("FeelsLikeC");
+        String FeelsLikeF = current_condition.getString("FeelsLikeF");
+        String weatherCode = current_condition.getString("weatherCode");
+        String weatherDesc = current_condition.getJSONArray("weatherDesc").getJSONObject(0).getString("value");
+        String weatherIconUrl = current_condition.getJSONArray("weatherIconUrl").getJSONObject(0).getString("value");
 
-            String windspeedMiles = current_condition.getString("windspeedMiles");
-            String windspeedKmph = current_condition.getString("windspeedKmph");
-            String winddirDegree = current_condition.getString("winddirDegree");
+        String windspeedMiles = current_condition.getString("windspeedMiles");
+        String windspeedKmph = current_condition.getString("windspeedKmph");
+        String winddirDegree = current_condition.getString("winddirDegree");
 
-            String maxtempC = weather.getString("maxtempC");
-            String maxtempF = weather.getString("maxtempF");
-            String mintempC = weather.getString("mintempC");
-            String mintempF = weather.getString("mintempF");
+        String maxtempC = weather.getString("maxtempC");
+        String maxtempF = weather.getString("maxtempF");
+        String mintempC = weather.getString("mintempC");
+        String mintempF = weather.getString("mintempF");
 
-            new DownloadImageTask(imgWeather).execute(weatherIconUrl);
-            // https://stackoverflow.com/questions/5776851/load-image-from-url
+        new DownloadImageTask(imgWeather).execute(weatherIconUrl);
 
-            //return sb.toString();
+        SharedPreferences sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
+        int degree = sharedPref.getInt(getString(R.string.key_degree), 0);
+        int speed = sharedPref.getInt(getString(R.string.key_speed), 0);
+        String temp = null;
+        String temp_min = null;
+        String temp_max = null;
+        String temp_feels_like = null;
+        if (degree == 0) {
+            String celsius = getString(R.string.celsius);
+            temp = temp_C + celsius;
+            temp_min = mintempC + celsius;
+            temp_max = maxtempC + celsius;
+            temp_feels_like = FeelsLikeC + celsius;
+        }
+        else if (degree == 1) {
+            String fahrenheit = getString(R.string.fahrenheit);
+            temp = temp_F + fahrenheit;
+            temp_min = mintempF + fahrenheit;
+            temp_max = maxtempF + fahrenheit;
+            temp_feels_like = FeelsLikeF + fahrenheit;
+        }
 
-
-            SharedPreferences sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
-            int degree = sharedPref.getInt(getString(R.string.key_degree), 0);
-            int speed = sharedPref.getInt(getString(R.string.key_speed), 0);
-            String temp = null;
-            String temp_min = null;
-            String temp_max = null;
-            String temp_feels_like = null;
-            if (degree == 0) {
-                String celsius = getString(R.string.celsius);
-                temp = temp_C + celsius;
-                temp_min = mintempC + celsius;
-                temp_max = maxtempC + celsius;
-                temp_feels_like = FeelsLikeC + celsius;
-            }
-            else if (degree == 1) {
-                String fahrenheit = getString(R.string.fahrenheit);
-                temp = temp_F + fahrenheit;
-                temp_min = mintempF + fahrenheit;
-                temp_max = maxtempF + fahrenheit;
-                temp_feels_like = FeelsLikeF + fahrenheit;
-            }
-
-            tvWeather.setText("Today");
-            tvLastUpdated.setText("Last Updated" + separator + localObsDateTime.split(" ", 2)[1]);
-            tvLocation.setText(areaName + ", " + city);
-            tvTemp.setText("Temperature" + separator + temp);
-            tvTempRange.setText("H: " + temp_max + separator + "L: " + temp_min);
-            tvWeatherDesc.setText(weatherDesc);
-            tvFeelsLike.setText("FeelsLike" + separator + temp_feels_like);
-//        }
+        tvWeather.setText("Today");
+        tvLastUpdated.setText("Last Updated" + separator + localObsDateTime.split(" ", 2)[1]);
+        tvLocation.setText(areaName + ", " + city);
+        tvTemp.setText("Temperature" + separator + temp);
+        tvTempRange.setText("H: " + temp_max + separator + "L: " + temp_min);
+        tvWeatherDesc.setText(weatherDesc);
+        tvFeelsLike.setText("FeelsLike" + separator + temp_feels_like);
     }
 }

@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,8 +68,10 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 101) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 loadFragment(new TodayFragment());
-            else
+            else {
+                Toast.makeText(this, "Need Location Permission for Weather Data Request", Toast.LENGTH_SHORT).show();
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
         }
         else
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
