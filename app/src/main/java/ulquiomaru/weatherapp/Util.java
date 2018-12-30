@@ -19,7 +19,7 @@ class Util {
 
     static void initWeatherIcons(Context context) {
         String[] stringArray = context.getResources().getStringArray(R.array.weatherData);
-        weatherIcons = new SparseArray<String>(stringArray.length);
+        weatherIcons = new SparseArray<>(stringArray.length);
         for (String entry : stringArray) {
             String[] splitResult = entry.split("\\|", 2);
             weatherIcons.put(Integer.valueOf(splitResult[0]), splitResult[1]);
